@@ -34,7 +34,7 @@ public class TypeDeclarationLookup implements TypeLookup<TypeDeclaration> {
   @Override
   public Optional<TypeDeclaration> forName(String fullyQualifiedName) {
     //1. Lookup resources
-    String resourceName = fullyQualifiedName.replaceAll(Pattern.quote("."), File.separator) + ".java";
+    String resourceName = fullyQualifiedName.replace(Pattern.quote("."), File.separator) + ".java";
     try {
       Optional<TypeDeclaration> typeDeclaration = Sources.readTypesFromResource(resourceName).stream().findFirst();
       if (typeDeclaration.isPresent()) {

@@ -88,7 +88,7 @@ public class Project {
     String className = classNameOf(fqcn);
 
     if (packageName.isPresent()) {
-      Optional<Path> path = packageName.map(p -> p.replaceAll(Pattern.quote("."), File.separator))
+      Optional<Path> path = packageName.map(p -> p.replace(Pattern.quote("."), File.separator))
           .map(p -> new File(sourceRoot, p))
           .map(f -> new File(f, className + ".java"))
           .filter(File::exists)
